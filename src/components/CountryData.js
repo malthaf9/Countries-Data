@@ -55,7 +55,7 @@ const CountryData = () => {
   const currency = currencies
     ? Object.values(currencies)[0]
     : { name: "Not Available", symbol: "" };
-  const border = borders ? Object.values(borders.join(",")) : null;
+  const border = borders ? Object.values(borders.join(",")) : "Not available";
 
   return (
     <div className="p-6 flex flex-col">
@@ -92,7 +92,7 @@ const CountryData = () => {
               <p>Subregion: {subregion}</p>
               <p>Continent: {continents}</p>
               <p>Timezone: {timezones}</p>
-              <p>Border: {border}</p>
+              <p>Border Countries: {border}</p>
               <p>Independent: {independent ? "Yes" : "No"}</p>
               <p>Landlocked: {landlocked ? "Yes" : "No"}</p>
             </div>
