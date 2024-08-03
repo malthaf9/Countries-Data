@@ -149,4 +149,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
    - Add a title and description to your pull request explaining what changes you have made.
    - Click the "Create pull request" button.
 
+9. **Conclusion**
+    -This project showcases how to use React and Tailwind CSS to create a dynamic, responsive web application for displaying country information. Contributions 
+     are welcome to improve and expand the project. Thank you for your interest and happy coding!
 
