@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import SingleCountry from "./SingleCountry";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -11,8 +11,9 @@ const CountryContainer = ({ query, region }) => {
       const response = await fetch("https://restcountries.com/v3.1/all");
       const data = await response.json();
       setCountries(data);
+      //console.log(data)
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -20,19 +21,16 @@ const CountryContainer = ({ query, region }) => {
     fetchedData();
   }, []);
 
+  const filteredCountries = useMemo(() => {
+return countries.filter((country) => country.name.common.toLowerCase().includes(query.toLowerCase())).filter((country) => country.region.includes(region))
+  }, [countries, query, region])
+
   return (
     <div className="flex flex-wrap m-4">
       {!countries ? (
         <Shimmer />
       ) : (
-        countries
-          .filter((country) =>
-            country.name.common.toLowerCase().includes(query.toLowerCase())
-          )
-          .filter((country) => 
-            country.region.includes(region)
-          )
-          .map((country) => (
+          filteredCountries.map((country) => (
             <Link
               className="p-0"
               key={country.cca3}
